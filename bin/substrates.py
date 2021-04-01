@@ -965,18 +965,18 @@ class SubstrateTab(object):
         self.yval1 = np.array( [(mcds[idx].data['discrete_cells']['internal_chemical_A'])  for idx in range(ds_count)] ).astype(float)
         print('yval1 = ',self.yval1)
         # print('yval1[0,;,:] = ',self.yval1[0,:,:])
-        print('yval1.shape = ',self.yval1.shape)
+        # print('yval1.shape = ',self.yval1.shape)
         self.analysis_data_set1 = True 
         self.yval1 = self.yval1[:,0]
 
         self.yval2 = np.array( [(mcds[idx].data['discrete_cells']['internal_chemical_B'])  for idx in range(ds_count)] ).astype(float)
         self.analysis_data_set2 = True 
-        print('yval2 = ',self.yval2)
+        # print('yval2 = ',self.yval2)
         self.yval2 = self.yval2[:,1]
 
         self.yval3 = np.array( [(mcds[idx].data['discrete_cells']['internal_chemical_C'])  for idx in range(ds_count)] ).astype(float)
         self.analysis_data_set3 = True 
-        print('yval3 = ',self.yval3)
+        # print('yval3 = ',self.yval3)
         self.yval3 = self.yval3[:,2]
 
         # self.analysis_data_wait.value = ''
@@ -1042,16 +1042,16 @@ class SubstrateTab(object):
         # if (substrate_frame_num >= len(self.xval)):
         if (kdx >= len(self.xval)):
             pass
-        # elif (substrate_frame_num >= 0 and len(self.xval) > 1):
+        elif (substrate_frame_num >= 0 and len(self.xval) > 1):
             # print('self.xval=',self.xval)  # [   0.   60.  120. ...
 
-            # if self.analysis_data_choice.value == 0:   # cells 1-3
-            #     self.ax1.plot(self.xval[kdx], self.yval1[kdx], p1[-1].get_color(), marker='o', markersize=12)
-            #     self.ax2.plot(self.xval[kdx], self.yval2[kdx], p2[-1].get_color(), marker='o', markersize=12)
-            #     self.ax3.plot(self.xval[kdx], self.yval3[kdx], p3[-1].get_color(), marker='o', markersize=12)
+            if self.analysis_data_choice.value == 0:   # cells 1-3
+                self.ax1.plot(self.xval[kdx], self.yval1[kdx], p1[-1].get_color(), marker='o', markersize=12)
+                self.ax2.plot(self.xval[kdx], self.yval2[kdx], p2[-1].get_color(), marker='o', markersize=12)
+                self.ax3.plot(self.xval[kdx], self.yval3[kdx], p3[-1].get_color(), marker='o', markersize=12)
 
-            #     ymax= max(int(self.yval1.max()),int(self.yval2.max()),int(self.yval3.max())) 
-            #     yoff= ymax * .01   # should be a % of axes range
+                ymax= max(int(self.yval1.max()),int(self.yval2.max()),int(self.yval3.max())) 
+                yoff= ymax * .01   # should be a % of axes range
 
         self.ax1.set_xlabel('time (min)', fontsize=self.axis_label_fontsize)
 
